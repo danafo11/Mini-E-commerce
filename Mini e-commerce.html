@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAN AFO'S MINI E-COMMERCE</title>
+    <link rel="stylesheet" href="bootstrap.css">
+
+    <style>
+        .button {
+            margin-left: 280px;
+        }
+
+    .container {
+    animation: pulse 7s infinite; /* set the animation to pulse for 2 seconds and repeat infinitely */
+
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1); /* start at normal size */
+    }
+    50% {
+      transform: scale(1.05); /* grow to 105% size */
+    }
+    100% {
+      transform: scale(1); /* return to normal size */
+    }
+  }
+
+  .welcome {
+    font-family: fantasy;
+  }
+    </style>
+</head>
+<body class="bg-warning mx-auto" onload="displayCart()">
+    <marquee behavior="" direction="ltr"><h1 class="text-light welcome">WELCOME TO DAN AFO MINI E-COMMERCE</h1></marquee>
+    
+    
+    <div class="container">
+        <div class="form-control w-50 mx-auto">
+            <input type="text" placeholder="Input your item here" id="user" class="w-100 border border-none dance">
+        </div>
+        <button class="bg-success button border-none rounded mt-2" onclick="addToCart()">Add to cart</button>
+        <div id="display"></div>
+    </div>
+
+    <script>
+        var cart = ["Airpod","Necklace","Hand towel"];
+        
+        function addToCart() {
+            // alert("I'm working fine")
+            cart.push(user.value);
+            displayCart();
+            console.log(cart);
+        }
+
+        function displayCart() {
+            // alert("I'm working fine")
+            display.innerHTML = "";
+            for (let index = 0; index < cart.length; index++) {
+                display.innerHTML += `
+                
+                <h1 class="text-light ms-2">${cart[index]}</h1>
+                <button class="btn btn-danger ms-2" onclick="deleteItem(${index})">Delete</button>
+                <button class="btn btn-success ms-2" onclick="editItem(${index})">Edit</button>
+                `
+                
+            }
+        }
+
+        function deleteItem(userIndex) {
+            cart.splice(userIndex,1);
+            displayCart();
+            console.log(cart);
+        }
+
+        function editItem(userIndex) {
+            var edited = prompt("Enter your new item");
+            cart.splice(userIndex,1,edited);
+            displayCart();
+            console.log(cart);
+        }
+    </script>
+</body>
+</html>
